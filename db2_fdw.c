@@ -2016,6 +2016,8 @@ db2ImportForeignSchema (ImportForeignSchemaStmt * stmt, Oid serverOid)
 	if (typeprec < 54)
           if (typeprec == 0)
 	    appendStringInfo (&buf, "float(1)");
+          else if (typeprec < 0)
+	    appendStringInfo (&buf, "float(1)");
           else
 	    appendStringInfo (&buf, "float(%d)", typeprec);
 	else
